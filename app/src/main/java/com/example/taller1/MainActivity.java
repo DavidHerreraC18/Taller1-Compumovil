@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 campoFibonacci = findViewById(R.id.campoFibonacci);
                 if(!(TextUtils.isEmpty(campoFibonacci.getText().toString()))){
-                    //Toast.makeText(getBaseContext(),"Ingreso el " + campoFibonacci.getText().toString(),Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
                     intent.putExtra("POSICIONES_FIBONACCI",campoFibonacci.getText().toString());
                     startActivity(intent);
@@ -46,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,arregloFactorial);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFactorial.setAdapter(adapter);
+        botonFactorial = findViewById(R.id.botonFactorial);
+        botonFactorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
+                //intent.putExtra("POSICIONES_FIBONACCI",campoFibonacci.getText().toString());
+                //startActivity(intent);
+                Toast.makeText(getBaseContext(),spinnerFactorial.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        botonPais = findViewById(R.id.botonPaises);
+        botonPais.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(),"paises".toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
