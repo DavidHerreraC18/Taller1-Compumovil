@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -21,7 +22,10 @@ public class FibonacciActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fibonacci);
-        List<String> numeros = fibonacci(5);
+        Intent intent = getIntent();
+        int posiciones = Integer.parseInt(intent.getStringExtra("POSICIONES_FIBONACCI"));
+        //Toast.makeText(getBaseContext(),posiciones,Toast.LENGTH_SHORT).show();
+        List<String> numeros = fibonacci(posiciones);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,numeros);
         ListView listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);

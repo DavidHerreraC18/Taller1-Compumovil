@@ -32,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 campoFibonacci = findViewById(R.id.campoFibonacci);
                 if(!(TextUtils.isEmpty(campoFibonacci.getText().toString()))){
-                    Toast.makeText(getBaseContext(),"Ingreso el " + campoFibonacci.getText().toString(),Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(getBaseContext(),DetallePaseoCliente.class));
+                    //Toast.makeText(getBaseContext(),"Ingreso el " + campoFibonacci.getText().toString(),Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
+                    intent.putExtra("POSICIONES_FIBONACCI",campoFibonacci.getText().toString());
+                    startActivity(intent);
                 }else{
                     Toast.makeText(getBaseContext(),"Aun no ingresa una posicion",Toast.LENGTH_SHORT).show();
                 }
