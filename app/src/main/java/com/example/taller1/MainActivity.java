@@ -41,12 +41,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        botonPais = findViewById(R.id.botonPaises);
+        botonPais.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                openPaisesActivity();
+            }
+        });
         spinnerFactorial = findViewById(R.id.spinnerFactorial);
         initArreglo();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,arregloFactorial);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFactorial.setAdapter(adapter);
 
+    }
+    public void openPaisesActivity()
+    {
+        Intent intent = new Intent(this, PaisesActivity.class);
+        startActivity(intent);
     }
 
     private void initArreglo(){
