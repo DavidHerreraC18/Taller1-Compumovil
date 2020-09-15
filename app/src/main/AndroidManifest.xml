@@ -12,7 +12,7 @@
         <activity android:name=".DetallePaisActivity"></activity>
         <activity android:name=".FibonacciActivity"></activity>
         <activity android:name=".FactorialActivity"></activity>
-        <activity android:name=".PaisesActivity" />
+        <activity android:name=".PaisesActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

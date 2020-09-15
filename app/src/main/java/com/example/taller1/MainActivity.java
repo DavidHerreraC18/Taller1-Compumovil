@@ -40,14 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        botonPais = findViewById(R.id.botonPaises);
-        botonPais.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                openPaisesActivity();
-            }
-        });
         spinnerFactorial = findViewById(R.id.spinnerFactorial);
         initArreglo();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,arregloFactorial);
@@ -57,17 +49,18 @@ public class MainActivity extends AppCompatActivity {
         botonFactorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
-                //intent.putExtra("POSICIONES_FIBONACCI",campoFibonacci.getText().toString());
-                //startActivity(intent);
-                Toast.makeText(getBaseContext(),spinnerFactorial.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(),FactorialActivity.class);
+                intent.putExtra("NUMERO_FACTORIAL",spinnerFactorial.getSelectedItem().toString());
+                startActivity(intent);
+                //Toast.makeText(getBaseContext(),spinnerFactorial.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
             }
         });
         botonPais = findViewById(R.id.botonPaises);
         botonPais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(),"paises".toString(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(),PaisesActivity.class);
+                startActivity(intent);
             }
         });
 
