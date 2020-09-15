@@ -1,6 +1,9 @@
 package com.example.taller1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +16,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LifecycleObserver {
     Button botonFibonacci;
     EditText campoFibonacci;
     Button botonFactorial;
     Spinner spinnerFactorial;
     Button botonPais;
     Integer[] arregloFactorial;
+    int cantidadFactorial = 0;
+    int cantidadFibonacci = 0;
+    Date fechaFactorial;
+    Date fechaFibonacci;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(),FibonacciActivity.class);
                     intent.putExtra("POSICIONES_FIBONACCI",campoFibonacci.getText().toString());
                     startActivity(intent);
+                    cantidadFibonacci++;
+                    fechaFibonacci = new Date();
                 }else{
                     Toast.makeText(getBaseContext(),"Aun no ingresa una posicion",Toast.LENGTH_SHORT).show();
                 }
@@ -52,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(),FactorialActivity.class);
                 intent.putExtra("NUMERO_FACTORIAL",spinnerFactorial.getSelectedItem().toString());
                 startActivity(intent);
-                //Toast.makeText(getBaseContext(),spinnerFactorial.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                cantidadFactorial++;
+                fechaFactorial = new Date();
             }
         });
         botonPais = findViewById(R.id.botonPaises);
@@ -65,10 +77,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void openPaisesActivity()
-    {
-        Intent intent = new Intent(this, PaisesActivity.class);
-        startActivity(intent);
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        String aviso = "";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Boolean mostrar = false;
+        if(fechaFactorial != null) {
+            aviso = aviso + "Factorial: \n" + " Accesos: " + cantidadFactorial + "\n Ultima vez accedido: " + formatter.format(fechaFactorial) + "\n";
+            mostrar= true;
+        }
+        if(fechaFibonacci != null) {
+            aviso = aviso + "Fibonacci: \n" + " Accesos: " + cantidadFibonacci + "\n Ultima vez accedido: " + formatter.format(fechaFibonacci) + "\n";
+            mostrar= true;
+        }
+        if (mostrar) {
+            Toast.makeText(getBaseContext(), aviso, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initArreglo(){
