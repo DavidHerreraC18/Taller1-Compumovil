@@ -47,6 +47,10 @@ public class FibonacciActivity extends AppCompatActivity {
     private ArrayList<String> fibonacci(int numero)
     {
         ArrayList <String> arreglo = new ArrayList<String>();
+        if(numero <= 0)
+        {
+            return arreglo;
+        }
         arreglo.add("0");
         if (numero == 1)
         {
