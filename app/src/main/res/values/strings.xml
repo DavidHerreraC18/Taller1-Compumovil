@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Taller1</string>
+    <string name="imagen_fibonacci">Imagen Fibonacci</string>
+    <string name="imagen_pais">Imagen País</string>
+    <string name="fibonacci">Fibonacci</string>
+    <string name="factorial">Factorial</string>
+    <string name="paises">Países</string>
+    <string name="capital">Capital</string>
+    <string name="nombre_internacional">Nombre Internacional</string>
+    <string name="sigla">Sigla</string>
+    <string name="title_activity_paises">PaisesActivity</string>
+    <string name="numero_hab">Número de Habitantes</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
